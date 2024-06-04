@@ -66,14 +66,14 @@ module SNT
         # options [Hash] attributes:
         # - ignore_errors [boolean] Do not add other service's errors to this service's errors
         def call_service!(service_class, attributes, options = {})
-          merge_result!(service_class.new(attributes).call, options)
+          merge_result!(service_class.new(**attributes).call, options)
         end
 
         # Call another service by passing the class, its attributes, and options. If other service fails, ignore the errors by default.
         # options [Hash] attributes:
         # - ignore_errors [boolean] Do not add other service's errors to this service's errors
         def call_service(service_class, attributes, options = { ignore_errors: true })
-          merge_result(service_class.new(attributes).call, options)
+          merge_result(service_class.new(**attributes).call, options)
         end
 
         private
